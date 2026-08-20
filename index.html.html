@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nathan Andrade Sites | Desenvolvedor Web & Experiências Digitais</title>
+    
+    <!-- Google Fonts: Outfit (Headings) & Plus Jakarta Sans (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: {
+                            50: '#FAF5ED',
+                            100: '#F3ECE0',
+                            200: '#E8DCCB',
+                            300: '#DBC9B2',
+                            400: '#CBB497',
+                            800: '#3D362A'
+                        },
+                        navy: {
+                            900: '#0B132B',
+                            800: '#1C2541',
+                            700: '#1E3A8A',
+                            600: '#2563EB',
+                            500: '#3B82F6',
+                            100: '#EFF6FF'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Outfit', 'sans-serif'],
+                        body: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #F3ECE0;
+            color: #1C2541;
+        }
+
+        h1, h2, h3, h4, .font-heading {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* Smooth glassmorphism with refined warm cream tint */
+        .glass-card {
+            background: rgba(253, 250, 244, 0.88);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(219, 201, 178, 0.6);
+        }
+
+        .glass-dark {
+            background: rgba(11, 19, 43, 0.92);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Frame aspect ratios & styling */
+        .device-frame {
+            box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F3ECE0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1E3A8A;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-cream-100 text-navy-800 antialiased selection:bg-navy-700 selection:text-white">
+
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="mainHeader">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="glass-card rounded-2xl px-5 py-3.5 flex items-center justify-between shadow-sm">
+                <!-- Brand Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-navy-700 text-cream-50 flex items-center justify-center font-heading font-extrabold text-xl shadow-md group-hover:bg-navy-600 transition-colors">
+                        N
+                    </div>
+                    <div>
+                        <span class="font-heading font-bold text-lg text-navy-900 block leading-none">Nathan Andrade</span>
+                        <span class="text-xs text-navy-700 font-semibold tracking-wider uppercase">Sites & Web Design</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-navy-800">
+                    <a href="#portfolio" class="hover:text-navy-600 transition-colors">Projetos</a>
+                    <a href="#diferenciais" class="hover:text-navy-600 transition-colors">Diferenciais</a>
+                    <a href="#processo" class="hover:text-navy-600 transition-colors">Como Funciona</a>
+                    <a href="#contato" class="hover:text-navy-600 transition-colors">Contato</a>
+                </nav>
+
+                <!-- Action Button -->
+                <div class="hidden md:flex items-center gap-3">
+                    <a href="https://wa.me/5561983181084?text=Olá%20Nathan!%20Vi%20seu%20portfólio%20e%20gostaria%20de%20solicitar%20um%20orçamento%20para%20meu%20site." target="_blank" rel="noopener" class="bg-navy-700 hover:bg-navy-600 text-cream-50 px-5 py-2.5 rounded-xl font-semibold text-sm shadow-lg shadow-navy-700/20 hover:shadow-navy-600/30 transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Solicitar Orçamento</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Toggle Button -->
+                <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg text-navy-900 hover:bg-cream-200 transition-colors" aria-label="Abrir Menu">
+                    <i class="fa-solid fa-bars text-xl" id="menuIcon"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="hidden md:hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-2">
+            <div class="glass-card rounded-2xl p-6 flex flex-col gap-4 shadow-xl border border-cream-300">
+                <a href="#portfolio" class="mobile-link py-2 font-medium text-navy-900 border-b border-cream-200">Projetos em Destaque</a>
+                <a href="#diferenciais" class="mobile-link py-2 font-medium text-navy-900 border-b border-cream-200">Por que investir num site?</a>
+                <a href="#processo" class="mobile-link py-2 font-medium text-navy-900 border-b border-cream-200">Passo a Passo</a>
+                <a href="#contato" class="mobile-link py-2 font-medium text-navy-900">Iniciar Projeto</a>
+                
+                <a href="https://wa.me/5561983181084?text=Olá%20Nathan!%20Vi%20seu%20portfólio%20e%20gostaria%20de%20solicitar%20um%20orçamento%20para%20meu%20site." target="_blank" rel="noopener" class="bg-navy-700 text-cream-50 w-full py-3 rounded-xl font-semibold text-center flex items-center justify-center gap-2 shadow-md mt-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Falar Direto no WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-28 sm:pt-36">
+
+        <section class="relative overflow-hidden px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24">
+            <!-- Decorative background elements -->
+            <div class="absolute -top-24 -right-24 w-96 h-96 bg-navy-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute top-1/2 -left-24 w-80 h-80 bg-cream-400/30 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-5xl mx-auto text-center relative z-10">
+                <!-- Status Badge -->
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-navy-100 border border-navy-700/20 text-navy-700 text-xs sm:text-sm font-semibold mb-6 shadow-sm">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span>Disponível para novos projetos e parcerias</span>
+                </div>
+
+                <!-- Main Title -->
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-navy-900 tracking-tight leading-tight sm:leading-none mb-6">
+                    Transforme visitantes em <span class="bg-gradient-to-r from-navy-700 via-navy-600 to-navy-500 bg-clip-text text-transparent">clientes fiéis</span> com um site profissional.
+                </h1>
+
+                <!-- Persuasive Copy Subtitle -->
+                <p class="text-base sm:text-xl text-navy-800 max-w-3xl mx-auto font-normal leading-relaxed mb-8">
+                    Eu crio **experiências digitais sob medida, ultrarrápidas e elegantes** que elevam o posicionamento do seu negócio, geram credibilidade imediata e vendem por você 24 horas por dia.
+                </p>
+
+                <!-- Hero CTA Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
+                    <a href="#portfolio" class="w-full sm:w-auto bg-navy-700 hover:bg-navy-800 text-cream-50 px-8 py-4 rounded-xl font-bold text-base shadow-xl shadow-navy-700/20 hover:shadow-navy-800/30 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
+                        <span>Ver Sites Criados</span>
+                        <i class="fa-solid fa-arrow-down text-sm"></i>
+                    </a>
+                    
+                    <a href="#contato" class="w-full sm:w-auto bg-cream-200 hover:bg-cream-300 text-navy-900 border border-cream-400/60 px-8 py-4 rounded-xl font-bold text-base transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-comments"></i>
+                        <span>Fazer Orçamento</span>
+                    </a>
+                </div>
+
+                <!-- Feature Highlights Pills (Optimized to 3 items) -->
+                <div class="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-3 gap-4 text-left max-w-3xl mx-auto">
+                    <div class="glass-card p-4 rounded-xl flex items-center gap-3 border border-cream-300">
+                        <div class="w-10 h-10 rounded-lg bg-navy-100 text-navy-700 flex items-center justify-center text-lg flex-shrink-0">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-heading font-bold text-sm text-navy-900">Carregamento Rápido</h4>
+                            <p class="text-xs text-navy-700">Sem travamentos</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-4 rounded-xl flex items-center gap-3 border border-cream-300">
+                        <div class="w-10 h-10 rounded-lg bg-navy-100 text-navy-700 flex items-center justify-center text-lg flex-shrink-0">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-heading font-bold text-sm text-navy-900">Foco em Conversão</h4>
+                            <p class="text-xs text-navy-700">Mais leads e vendas</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-4 rounded-xl flex items-center gap-3 border border-cream-300">
+                        <div class="w-10 h-10 rounded-lg bg-navy-100 text-navy-700 flex items-center justify-center text-lg flex-shrink-0">
+                            <i class="fa-solid fa-paint-brush"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-heading font-bold text-sm text-navy-900">Design Exclusivo</h4>
+                            <p class="text-xs text-navy-700">Feito sob medida</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="py-16 sm:py-24 bg-cream-50 relative border-t border-cream-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-navy-700 font-bold uppercase tracking-wider text-xs bg-navy-100 px-3 py-1 rounded-full border border-navy-700/10">Projetos Reais</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-navy-900 mt-3 mb-4">Veja alguns dos sites que já criei</h2>
+                    <p class="text-navy-800 text-base sm:text-lg">
+                        Explore os projetos abaixo interativamente ou abra-os diretamente para conferir o resultado final em tempo real.
+                    </p>
+                </div>
+
+                <div class="space-y-20">
+
+                    <!-- PROJECT 1: GlowFit Club -->
+                    <div class="glass-card rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl border border-cream-300/80">
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                            
+                            <!-- Information Column -->
+                            <div class="lg:col-span-5 space-y-6">
+                                <div class="inline-flex items-center gap-2 text-xs font-semibold px-3 py-1 rounded-md bg-amber-100 text-amber-800">
+                                    <i class="fa-solid fa-dumbbell"></i> Fitness & Saúde
+                                </div>
+
+                                <h3 class="text-2xl sm:text-3xl font-extrabold text-navy-900">GlowFit Club</h3>
+                                
+                                <p class="text-navy-800 text-sm sm:text-base leading-relaxed">
+                                    Plataforma moderna desenvolvida para comunidade fitness, com visual enérgico e estrutura estratégica focada no engajamento dos alunos e na conversão de novos membros.
+                                </p>
+
+                                <!-- Highlights -->
+                                <div class="space-y-2">
+                                    <div class="flex items-center gap-2 text-sm text-navy-900 font-medium">
+                                        <i class="fa-solid fa-circle-check text-navy-700"></i> Layout vibrante e de alto impacto visual
+                                    </div>
+                                    <div class="flex items-center gap-2 text-sm text-navy-900 font-medium">
+                                        <i class="fa-solid fa-circle-check text-navy-700"></i> Chamadas de ação estratégicas (CTA)
+                                    </div>
+                                    <div class="flex items-center gap-2 text-sm text-navy-900 font-medium">
+                                        <i class="fa-solid fa-circle-check text-navy-700"></i> Adaptação perfeita para Smartphones
+                                    </div>
+                                </div>
+
+                                <!-- Action Buttons -->
+                                <div class="pt-4 flex flex-wrap items-center gap-3">
+                                    <a href="https://glowfitclub.vercel.app/" target="_blank" rel="noopener" class="bg-navy-700 hover:bg-navy-800 text-cream-50 px-5 py-3 rounded-xl text-sm font-bold flex items-center gap-2 shadow-md transition-all">
+                                        <span>Acessar Site Vivo</span>
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </a>
+
+                                    <button onclick="openModal('https://glowfitclub.vercel.app/', 'GlowFit Club')" class="bg-cream-200 hover:bg-cream-300 text-navy-900 px-4 py-3 rounded-xl text-sm font-semibold flex items-center gap-2 transition-all">
+                                        <i class="fa-solid fa-expand"></i>
+                                        <span>Tela Cheia</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Interactive Live Preview Frame -->
+                            <div class="lg:col-span-7">
+                                <div class="device-frame bg-navy-900 rounded-2xl overflow-hidden border border-navy-800 shadow-2xl">
+                                    <!-- Device Top Bar -->
+                                    <div class="bg-navy-900 px-4 py-3 flex items-center justify-between border-b border-navy-800">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+                                            <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+                                            <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
+                                        </div>
+                                        <div class="text-xs text-slate-400 bg-navy-800/80 px-4 py-1 rounded-full font-mono truncate max-w-[200px] sm:max-w-xs">
+                                            https://glowfitclub.vercel.app/
+                                        </div>
+                                        <div class="text-slate-400 text-xs">
+                                            <i class="fa-solid fa-lock text-emerald-400 mr-1"></i> SSL
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Web Preview Container -->
+                                    <div class="relative w-full h-[380px] sm:h-[450px] bg-slate-900">
+                                        <iframe src="https://glowfitclub.vercel.app/" class="w-full h-full border-0" title="Preview GlowFit Club" loading="lazy"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <!-- PROJECT 2: Dra. Roberta Fontão -->
+                    <div class="glass-card rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl border border-cream-300/80">
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                            
+                            <!-- Interactive Live Preview Frame (Alternate Order on Desktop) -->
+                            <div class="lg:col-span-7 order-2 lg:order-1">
+                                <div class="device-frame bg-navy-900 rounded-2xl overflow-hidden border border-navy-800 shadow-2xl">
+                                    <!-- Device Top Bar -->
+                                    <div class="bg-navy-900 px-4 py-3 flex items-center justify-between border-b border-navy-800">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+                                            <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+                                            <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
+                                        </div>
+                                        <div class="text-xs text-slate-400 bg-navy-800/80 px-4 py-1 rounded-full font-mono truncate max-w-[200px] sm:max-w-xs">
+                                            https://drarobertafontao.vercel.app/
+                                        </div>
+                                        <div class="text-slate-400 text-xs">
+                                            <i class="fa-solid fa-lock text-emerald-400 mr-1"></i> SSL
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Web Preview Container -->
+                                    <div class="relative w-full h-[380px] sm:h-[450px] bg-slate-900">
+                                        <iframe src="https://drarobertafontao.vercel.app/" class="w-full h-full border-0" title="Preview Dra. Roberta Fontão" loading="lazy"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Information Column -->
+                            <div class="lg:col-span-5 space-y-6 order-1 lg:order-2">
+                                <div class="inline-flex items-center gap-2 text-xs font-semibold px-3 py-1 rounded-md bg-teal-100 text-teal-800">
+                                    <i class="fa-solid fa-user-doctor"></i> Saúde & Medicina
+                                </div>
+
+                                <h3 class="text-2xl sm:text-3xl font-extrabold text-navy-900">Dra. Roberta Fontão</h3>
+                                
+                                <p class="text-navy-800 text-sm sm:text-base leading-relaxed">
+                                    Website institucional de alta sofisticação para área médica. Desenvolvido para transmitir seriedade, segurança e facilitar o agendamento de consultas diretas pelo atendimento digital.
+                                </p>
+
+                                <!-- Highlights -->
+                                <div class="space-y-2">
+                                    <div class="flex items-center gap-2 text-sm text-navy-900 font-medium">
+                                        <i class="fa-solid fa-circle-check text-navy-700"></i> Estética minimalista, limpa e refinada
+                                    </div>
+                                    <div class="flex items-center gap-2 text-sm text-navy-900 font-medium">
+                                        <i class="fa-solid fa-circle-check text-navy-700"></i> Foco na autoridade profissional e depoimentos
+                                    </div>
+                                    <div class="flex items-center gap-2 text-sm text-navy-900 font-medium">
+                                        <i class="fa-solid fa-circle-check text-navy-700"></i> Integração facilitada de agendamentos
+                                    </div>
+                                </div>
+
+                                <!-- Action Buttons -->
+                                <div class="pt-4 flex flex-wrap items-center gap-3">
+                                    <a href="https://drarobertafontao.vercel.app/" target="_blank" rel="noopener" class="bg-navy-700 hover:bg-navy-800 text-cream-50 px-5 py-3 rounded-xl text-sm font-bold flex items-center gap-2 shadow-md transition-all">
+                                        <span>Acessar Site Vivo</span>
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </a>
+
+                                    <button onclick="openModal('https://drarobertafontao.vercel.app/', 'Dra. Roberta Fontão')" class="bg-cream-200 hover:bg-cream-300 text-navy-900 px-4 py-3 rounded-xl text-sm font-semibold flex items-center gap-2 transition-all">
+                                        <i class="fa-solid fa-expand"></i>
+                                        <span>Tela Cheia</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="diferenciais" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-navy-700 font-bold uppercase tracking-wider text-xs bg-navy-100 px-3 py-1 rounded-full border border-navy-700/10">Por que escolher o Nathan?</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-navy-900 mt-3 mb-4">Um site ruim custa mais caro do que você imagina</h2>
+                <p class="text-navy-800 text-base sm:text-lg">
+                    Se o seu site demorar a carregar ou parecer desatualizado, o seu cliente ideal vai fechar a página e comprar do seu concorrente. Veja o padrão dos meus projetos:
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="glass-card p-8 rounded-2xl border border-cream-300 shadow-sm hover:shadow-md transition-all">
+                    <div class="w-12 h-12 bg-navy-700 text-cream-50 rounded-xl flex items-center justify-center text-xl mb-6 shadow-md">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy-900 mb-3">Foco em Vendas</h3>
+                    <p class="text-navy-800 text-sm leading-relaxed">
+                        Não crio apenas páginas bonitas. Cada seção, texto e botão é pensado estrategicamente para guiar o visitante até fechar negócio com você.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card p-8 rounded-2xl border border-cream-300 shadow-sm hover:shadow-md transition-all">
+                    <div class="w-12 h-12 bg-navy-700 text-cream-50 rounded-xl flex items-center justify-center text-xl mb-6 shadow-md">
+                        <i class="fa-solid fa-mobile-retro"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy-900 mb-3">Mobile First (Celulares)</h3>
+                    <p class="text-navy-800 text-sm leading-relaxed">
+                        Mais de 80% do seu público acessará seu site pelo smartphone. Garanto uma navegação fluida, leve e perfeita no celular.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card p-8 rounded-2xl border border-cream-300 shadow-sm hover:shadow-md transition-all">
+                    <div class="w-12 h-12 bg-navy-700 text-cream-50 rounded-xl flex items-center justify-center text-xl mb-6 shadow-md">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy-900 mb-3">Autonomia & Segurança</h3>
+                    <p class="text-navy-800 text-sm leading-relaxed">
+                        Seu site entregue pronto com protocolo de segurança (HTTPS/SSL), velocidade otimizada e facilidade total de gerenciamento.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="processo" class="py-16 sm:py-24 bg-navy-900 text-cream-50 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-navy-500 font-bold uppercase tracking-wider text-xs bg-navy-800 px-3 py-1 rounded-full border border-navy-700">Simples e Transparente</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3 mb-4">Como funciona o desenvolvimento?</h2>
+                    <p class="text-slate-300 text-base sm:text-lg">
+                        Você não precisa se preocupar com códigos ou burocracias. Eu cuido de tudo do início ao fim.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <!-- Step 1 -->
+                    <div class="bg-navy-800/60 p-6 rounded-2xl border border-navy-700 relative">
+                        <div class="text-3xl font-extrabold text-navy-500 mb-4">01</div>
+                        <h4 class="text-lg font-bold text-white mb-2">Alinhamento</h4>
+                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                            Entendo seu negócio, seus objetivos, o seu público-alvo e o que seu site precisa ter para ter sucesso.
+                        </p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="bg-navy-800/60 p-6 rounded-2xl border border-navy-700 relative">
+                        <div class="text-3xl font-extrabold text-navy-500 mb-4">02</div>
+                        <h4 class="text-lg font-bold text-white mb-2">Design & Copy</h4>
+                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                            Desenvolvo o visual moderno, as cores adequadas e organizo os textos para captar a atenção do visitante.
+                        </p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="bg-navy-800/60 p-6 rounded-2xl border border-navy-700 relative">
+                        <div class="text-3xl font-extrabold text-navy-500 mb-4">03</div>
+                        <h4 class="text-lg font-bold text-white mb-2">Desenvolvimento</h4>
+                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                            Transformo o layout em um site real, rápido, responsivo e preparado para mecanismos de busca.
+                        </p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="bg-navy-800/60 p-6 rounded-2xl border border-navy-700 relative">
+                        <div class="text-3xl font-extrabold text-navy-500 mb-4">04</div>
+                        <h4 class="text-lg font-bold text-white mb-2">Lançamento</h4>
+                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                            Testamos tudo juntos e colocamos o seu novo site no ar, pronto para atrair e fechar novos clientes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+            <div class="glass-card rounded-3xl p-8 sm:p-12 lg:p-16 border border-cream-300 shadow-2xl text-center relative overflow-hidden">
+                <div class="max-w-2xl mx-auto space-y-6 relative z-10">
+                    <span class="text-navy-700 font-bold uppercase tracking-wider text-xs bg-navy-100 px-3 py-1 rounded-full border border-navy-700/10">Pronto para dar o próximo passo?</span>
+                    
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-navy-900 leading-tight">
+                        Vamos criar o site perfeito para o seu negócio?
+                    </h2>
+                    
+                    <p class="text-navy-800 text-base sm:text-lg leading-relaxed">
+                        Entre em contato diretamente comigo. Vamos conversar sem compromisso sobre as necessidades do seu projeto e como posso te ajudar a ter mais resultados na internet.
+                    </p>
+
+                    <div class="pt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <a href="https://wa.me/5561983181084?text=Olá%20Nathan!%20Quero%20fazer%20um%20site%20para%20o%20meu%20negócio.%20Podemos%20conversar?" target="_blank" rel="noopener" class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-xl font-bold text-base shadow-xl transition-all flex items-center justify-center gap-3">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i>
+                            <span>Conversar no WhatsApp</span>
+                        </a>
+                    </div>
+
+                    <div class="pt-4 text-xs text-navy-700 flex items-center justify-center gap-6">
+                        <span><i class="fa-solid fa-check text-emerald-600 mr-1"></i> Resposta rápida</span>
+                        <span><i class="fa-solid fa-check text-emerald-600 mr-1"></i> Sem compromisso</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-navy-900 text-cream-200 py-12 border-t border-navy-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+            <div>
+                <p class="font-heading font-bold text-lg text-white">Nathan Andrade Sites</p>
+                <p class="text-xs text-slate-400 mt-1">Desenvolvimento Web & Soluções Digitais Profissionais</p>
+            </div>
+            
+            <p class="text-xs text-slate-400">
+                &copy; <span id="year"></span> Nathan Andrade. Todos os direitos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <div id="previewModal" class="fixed inset-0 z-50 hidden bg-navy-900/90 backdrop-blur-md flex flex-col p-2 sm:p-6 transition-opacity">
+        <div class="flex items-center justify-between bg-navy-900 text-cream-50 px-4 py-3 rounded-t-xl border-b border-navy-800">
+            <span id="modalTitle" class="font-heading font-bold text-base">Preview em Tela Cheia</span>
+            <div class="flex items-center gap-4">
+                <a id="modalExternalLink" href="#" target="_blank" class="text-xs text-navy-500 hover:text-white flex items-center gap-1 font-semibold">
+                    <span>Abrir Aba Externa</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+                <button onclick="closeModal()" class="w-8 h-8 rounded-lg bg-navy-800 hover:bg-navy-700 flex items-center justify-center text-slate-300 hover:text-white transition-colors">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+        </div>
+        <div class="flex-1 bg-black rounded-b-xl overflow-hidden relative">
+            <iframe id="modalIframe" src="" class="w-full h-full border-0" title="Full Preview"></iframe>
+        </div>
+    </div>
+
+    <script>
+        // Set dynamic copyright year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.className = 'fa-solid fa-bars text-xl';
+            } else {
+                menuIcon.className = 'fa-solid fa-xmark text-xl';
+            }
+        });
+
+        // Close mobile menu when clicking any link inside it
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.className = 'fa-solid fa-bars text-xl';
+            });
+        });
+
+        // Fullscreen Modal functions
+        const previewModal = document.getElementById('previewModal');
+        const modalIframe = document.getElementById('modalIframe');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalExternalLink = document.getElementById('modalExternalLink');
+
+        function openModal(url, title) {
+            modalIframe.src = url;
+            modalTitle.textContent = title;
+            modalExternalLink.href = url;
+            previewModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            previewModal.classList.add('hidden');
+            modalIframe.src = '';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !previewModal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
